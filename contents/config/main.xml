@@ -6,8 +6,54 @@
   <kcfgfile name=""/>
 
   <group name="">
-    <entry name="keepEmptyMiddleDesktops" type="Bool">
+
+<!--  Global    -->
+    <entry name="currentDesktopIsAlwaysUsed" type="bool">
       <default>false</default>
+    </entry>
+    <entry name="optimiseActivityOverlap" type="bool">
+      <default>true</default>
+    </entry>
+    <!-- Advanced -->
+    <entry name="swapDesktopsWhenPossible" type="bool">
+      <default>true</default>
+    </entry>
+    <entry name="alwaysUseActivityLastVirtualDesktopCompatibilityLayer" type="bool">
+      <default>false</default>
+    </entry>
+    <entry name="currentDesktopChangedDelay" type="Int">
+      <default>0</default>
+    </entry>
+    <entry name="windowMovedDelay" type="Int">
+      <default>0</default>
+    </entry>
+    <entry name="windowClosedDelay" type="Int">
+      <default>0</default>
+    </entry>
+    <entry name="activityCompatLayerCurrentDesktopChangedDelay" type="Int">
+      <default>0</default>
+    </entry>
+    <entry name="activityCompatLayerCurrentActivityChangedDelay" type="Int">
+      <default>5</default>
+    </entry>
+<!--  Up     -->
+    <entry name="topEdgePolicy" type="Int">
+      <default>0</default>
+    </entry>
+
+<!--  Left   -->
+    <entry name="leftEdgePolicy" type="Int">
+      <default>0</default>
+    </entry>
+
+<!--  Right  -->
+    <entry name="rightEdgePolicy" type="Int">
+      <default>0</default>
+    </entry>
+
+<!--  Down   -->
+    <entry name="bottomEdgePolicy" type="Int">
+      <default>0</default>
     </entry>
   </group>
 

@@ -1,27 +1,1692 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+ <author>Dorian OUAKLI</author>
  <class>KWin::DynamicWorkspacesConfigForm</class>
  <widget class="QWidget" name="KWin::DynamicWorkspacesConfigForm">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>200</width>
-    <height>100</height>
+    <width>1209</width>
+    <height>914</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dynamic Workspaces</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-      <widget class="QCheckBox" name="kcfg_keepEmptyMiddleDesktops">
-        <property name="text">
-          <string>Keep empty desktops between occupied ones</string>
-        </property>
-      </widget>
-    </item>
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <attribute name="title">
+       <string>Tab 1</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
+        <layout class="QGridLayout" name="gridLayout" rowstretch="2,1,2" columnstretch="2,1,2">
+         <property name="sizeConstraint">
+          <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+         </property>
+         <item row="2" column="1">
+          <layout class="QHBoxLayout" name="bottomEdgeHorizontalLayout">
+           <item>
+            <widget class="QGroupBox" name="groupBox_3">
+             <property name="title">
+              <string/>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
+              <item>
+               <layout class="QFormLayout" name="formLayout_5">
+                <property name="fieldGrowthPolicy">
+                 <enum>QFormLayout::FieldGrowthPolicy::AllNonFixedFieldsGrow</enum>
+                </property>
+                <property name="rowWrapPolicy">
+                 <enum>QFormLayout::RowWrapPolicy::WrapLongRows</enum>
+                </property>
+                <property name="labelAlignment">
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="formAlignment">
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QPushButton" name="pushButton_14">
+                  <property name="palette">
+                   <palette>
+                    <active>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </active>
+                    <inactive>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </inactive>
+                    <disabled>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </disabled>
+                   </palette>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::FocusPolicy::NoFocus</enum>
+                  </property>
+                  <property name="text">
+                   <string>Automatic Edge Policy:</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="media-playback-start"/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="KComboBox" name="kcfg_bottomEdgePolicy">
+                  <item>
+                   <property name="text">
+                    <string>Dynamic</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="view-refresh"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Shrink</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="list-remove"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Ignore</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="dialog-cancel"/>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="pushButton_15">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="palette">
+                   <palette>
+                    <active>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </active>
+                    <inactive>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </inactive>
+                    <disabled>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </disabled>
+                   </palette>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::FocusPolicy::NoFocus</enum>
+                  </property>
+                  <property name="text">
+                   <string>Add Row Shortcut:</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="list-add"/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="KKeySequenceWidget" name="kshortcutwidget_7">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="pushButton_16">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="palette">
+                   <palette>
+                    <active>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </active>
+                    <inactive>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </inactive>
+                    <disabled>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </disabled>
+                   </palette>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::FocusPolicy::NoFocus</enum>
+                  </property>
+                  <property name="text">
+                   <string>Remove Row Shortcut:</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="list-remove"/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="KKeySequenceWidget" name="kshortcutwidget_8">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="Line" name="line_3">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_3">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+  background: transparent;
+  border: none;
+}
+QPushButton::pressed {
+  background:none;
+  border: none;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Down</string>
+                </property>
+                <property name="icon">
+                 <iconset theme="go-down"/>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <layout class="QHBoxLayout" name="leftEdgeHorizontalLayout">
+           <item>
+            <widget class="QGroupBox" name="groupBox_2">
+             <property name="title">
+              <string/>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="0,0,0">
+              <item>
+               <widget class="QPushButton" name="pushButton_2">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+  background: transparent;
+  border: none;
+}
+QPushButton::pressed {
+  background:none;
+  border: none;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Left</string>
+                </property>
+                <property name="icon">
+                 <iconset theme="go-previous"/>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="Line" name="line_2">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QFormLayout" name="formLayout_3">
+                <property name="fieldGrowthPolicy">
+                 <enum>QFormLayout::FieldGrowthPolicy::AllNonFixedFieldsGrow</enum>
+                </property>
+                <property name="rowWrapPolicy">
+                 <enum>QFormLayout::RowWrapPolicy::WrapLongRows</enum>
+                </property>
+                <property name="labelAlignment">
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="formAlignment">
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QPushButton" name="pushButton_8">
+                  <property name="palette">
+                   <palette>
+                    <active>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </active>
+                    <inactive>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </inactive>
+                    <disabled>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </disabled>
+                   </palette>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::FocusPolicy::NoFocus</enum>
+                  </property>
+                  <property name="text">
+                   <string>Automatic Edge Policy</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="media-playback-start"/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="KComboBox" name="kcfg_leftEdgePolicy">
+                  <item>
+                   <property name="text">
+                    <string>Dynamic</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="view-refresh"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Shrink</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="list-remove"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Ignore</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="dialog-cancel"/>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="pushButton_9">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="palette">
+                   <palette>
+                    <active>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </active>
+                    <inactive>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </inactive>
+                    <disabled>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </disabled>
+                   </palette>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::FocusPolicy::NoFocus</enum>
+                  </property>
+                  <property name="text">
+                   <string>Add Column Shortcut:</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="list-add"/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="KKeySequenceWidget" name="kshortcutwidget_3">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="pushButton_10">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="palette">
+                   <palette>
+                    <active>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </active>
+                    <inactive>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </inactive>
+                    <disabled>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </disabled>
+                   </palette>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::FocusPolicy::NoFocus</enum>
+                  </property>
+                  <property name="text">
+                   <string>Remove Column Shortcut:</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="list-remove"/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="KKeySequenceWidget" name="kshortcutwidget_4">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="1">
+          <layout class="QHBoxLayout" name="topEdgeHorizontalLayout">
+           <item>
+            <widget class="QGroupBox" name="groupBox">
+             <property name="title">
+              <string/>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0">
+              <item>
+               <widget class="QPushButton" name="pushButton">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+  background: transparent;
+  border: none;
+}
+QPushButton::pressed {
+  background:none;
+  border: none;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Up</string>
+                </property>
+                <property name="icon">
+                 <iconset theme="go-up"/>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="Line" name="line">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QFormLayout" name="formLayout">
+                <property name="fieldGrowthPolicy">
+                 <enum>QFormLayout::FieldGrowthPolicy::AllNonFixedFieldsGrow</enum>
+                </property>
+                <property name="rowWrapPolicy">
+                 <enum>QFormLayout::RowWrapPolicy::WrapLongRows</enum>
+                </property>
+                <property name="labelAlignment">
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="formAlignment">
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QPushButton" name="pushButton_5">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="palette">
+                   <palette>
+                    <active>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </active>
+                    <inactive>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </inactive>
+                    <disabled>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </disabled>
+                   </palette>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::FocusPolicy::NoFocus</enum>
+                  </property>
+                  <property name="text">
+                   <string>Automatic Edge Policy:</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="media-playback-start"/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="KComboBox" name="kcfg_topEdgePolicy">
+                  <property name="currentIndex">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>Dynamic</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="view-refresh"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Shrink</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="list-remove"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Ignore</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="dialog-cancel"/>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="pushButton_6">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="palette">
+                   <palette>
+                    <active>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </active>
+                    <inactive>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </inactive>
+                    <disabled>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </disabled>
+                   </palette>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::FocusPolicy::NoFocus</enum>
+                  </property>
+                  <property name="text">
+                   <string>Add Row Shortcut:</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="list-add"/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="KKeySequenceWidget" name="kshortcutwidget">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="pushButton_7">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="palette">
+                   <palette>
+                    <active>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </active>
+                    <inactive>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </inactive>
+                    <disabled>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </disabled>
+                   </palette>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::FocusPolicy::NoFocus</enum>
+                  </property>
+                  <property name="text">
+                   <string>Remove Row Shortcut:</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="list-remove"/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="KKeySequenceWidget" name="kshortcutwidget_2">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="2">
+          <layout class="QHBoxLayout" name="rightEdgeHorizontalLayout">
+           <item>
+            <widget class="QGroupBox" name="groupBox_4">
+             <property name="title">
+              <string/>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="0,0,0">
+              <item>
+               <layout class="QFormLayout" name="formLayout_4">
+                <property name="fieldGrowthPolicy">
+                 <enum>QFormLayout::FieldGrowthPolicy::AllNonFixedFieldsGrow</enum>
+                </property>
+                <property name="rowWrapPolicy">
+                 <enum>QFormLayout::RowWrapPolicy::WrapLongRows</enum>
+                </property>
+                <property name="labelAlignment">
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <property name="formAlignment">
+                 <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QPushButton" name="pushButton_11">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="palette">
+                   <palette>
+                    <active>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </active>
+                    <inactive>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </inactive>
+                    <disabled>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </disabled>
+                   </palette>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::FocusPolicy::NoFocus</enum>
+                  </property>
+                  <property name="text">
+                   <string>Automatic Edge Policy:</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="media-playback-start"/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="KComboBox" name="kcfg_rightEdgePolicy">
+                  <item>
+                   <property name="text">
+                    <string>Dynamic</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="view-refresh"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Shrink</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="list-remove"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Ignore</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="dialog-cancel"/>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="pushButton_12">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="palette">
+                   <palette>
+                    <active>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </active>
+                    <inactive>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </inactive>
+                    <disabled>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </disabled>
+                   </palette>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::FocusPolicy::NoFocus</enum>
+                  </property>
+                  <property name="text">
+                   <string>Add Column Shortcut:</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="list-add"/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="KKeySequenceWidget" name="kshortcutwidget_5">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="pushButton_13">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="palette">
+                   <palette>
+                    <active>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </active>
+                    <inactive>
+                     <colorrole role="Highlight">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </inactive>
+                    <disabled>
+                     <colorrole role="Accent">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="0">
+                        <red>61</red>
+                        <green>174</green>
+                        <blue>233</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                    </disabled>
+                   </palette>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::FocusPolicy::NoFocus</enum>
+                  </property>
+                  <property name="text">
+                   <string>Remove Column Shortcut:</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="list-remove"/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="KKeySequenceWidget" name="kshortcutwidget_6">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="modifierlessAllowed">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="Line" name="line_4">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_4">
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+  background: transparent;
+  border: none;
+}
+QPushButton::pressed {
+  background:none;
+  border: none;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Right</string>
+                </property>
+                <property name="icon">
+                 <iconset theme="go-next"/>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="1">
+          <widget class="QGroupBox" name="globalSettingsGroupBox">
+           <property name="title">
+            <string>Global Settings</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <widget class="QCheckBox" name="kcfg_currentDesktopIsAlwaysUsed">
+              <property name="text">
+               <string>Always consider the current desktop as being used</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="kcfg_optimiseActivityOverlap">
+              <property name="text">
+               <string>Optimise activities overlap</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="KCollapsibleGroupBox" name="kcollapsiblegroupbox">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="title">
+               <string>Advanced settings</string>
+              </property>
+              <property name="expanded">
+               <bool>false</bool>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_6">
+               <item>
+                <widget class="QCheckBox" name="kcfg_swapDesktopsWhenPossible">
+                 <property name="text">
+                  <string>Swap desktops when possible</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="kcfg_alwaysUseActivityLastVirtualDesktopCompatibilityLayer">
+                 <property name="text">
+                  <string>Always use lastVirtualDesktop compat layer</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_6">
+                 <property name="title">
+                  <string>General Delays before updating</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_2">
+                  <item row="0" column="0">
+                   <layout class="QFormLayout" name="formLayout_2">
+                    <property name="fieldGrowthPolicy">
+                     <enum>QFormLayout::FieldGrowthPolicy::AllNonFixedFieldsGrow</enum>
+                    </property>
+                    <property name="rowWrapPolicy">
+                     <enum>QFormLayout::RowWrapPolicy::WrapLongRows</enum>
+                    </property>
+                    <property name="formAlignment">
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                    </property>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="windowChangedDelayMsLabel">
+                      <property name="text">
+                       <string>Current Desktop Changed:</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QSpinBox" name="kcfg_currentDesktopChangedDelay">
+                      <property name="suffix">
+                       <string> ms</string>
+                      </property>
+                      <property name="maximum">
+                       <number>10000</number>
+                      </property>
+                      <property name="singleStep">
+                       <number>10</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="windowMovedLabel">
+                      <property name="text">
+                       <string>Window Moved</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QSpinBox" name="kcfg_windowMovedDelay">
+                      <property name="suffix">
+                       <string> ms</string>
+                      </property>
+                      <property name="maximum">
+                       <number>10000</number>
+                      </property>
+                      <property name="singleStep">
+                       <number>10</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="windowClosedLabel">
+                      <property name="text">
+                       <string>Window Closed</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QSpinBox" name="kcfg_windowClosedDelay">
+                      <property name="suffix">
+                       <string> ms</string>
+                      </property>
+                      <property name="prefix">
+                       <string/>
+                      </property>
+                      <property name="maximum">
+                       <number>10000</number>
+                      </property>
+                      <property name="singleStep">
+                       <number>10</number>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QGroupBox" name="groupBox_5">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="title">
+                  <string>Activities optimiser compatibility layer delays</string>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_3">
+                  <item row="0" column="0">
+                   <layout class="QFormLayout" name="formLayout_6">
+                    <property name="sizeConstraint">
+                     <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+                    </property>
+                    <property name="fieldGrowthPolicy">
+                     <enum>QFormLayout::FieldGrowthPolicy::AllNonFixedFieldsGrow</enum>
+                    </property>
+                    <property name="rowWrapPolicy">
+                     <enum>QFormLayout::RowWrapPolicy::WrapLongRows</enum>
+                    </property>
+                    <property name="formAlignment">
+                     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                    </property>
+                    <property name="verticalSpacing">
+                     <number>6</number>
+                    </property>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="currentDesktopChangedLabel">
+                      <property name="text">
+                       <string>Current Desktop Changed</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QSpinBox" name="kcfg_activityCompatLayerCurrentDesktopChangedDelay">
+                      <property name="suffix">
+                       <string> ms</string>
+                      </property>
+                      <property name="maximum">
+                       <number>10000</number>
+                      </property>
+                      <property name="singleStep">
+                       <number>10</number>
+                      </property>
+                      <property name="value">
+                       <number>0</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="currentActivityChangedLabel">
+                      <property name="text">
+                       <string>Current Activity Changed</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QSpinBox" name="kcfg_activityCompatLayerCurrentActivityChangedDelay">
+                      <property name="suffix">
+                       <string> ms</string>
+                      </property>
+                      <property name="maximum">
+                       <number>10000</number>
+                      </property>
+                      <property name="singleStep">
+                       <number>10</number>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <attribute name="title">
+       <string>Tab 2</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="0">
+        <layout class="QGridLayout" name="gridLayout_5"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KComboBox</class>
+   <extends>QComboBox</extends>
+   <header>kcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KCollapsibleGroupBox</class>
+   <extends>QWidget</extends>
+   <header>kcollapsiblegroupbox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>KKeySequenceWidget</class>
+   <extends>QWidget</extends>
+   <header>kkeysequencewidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
- </ui>
+ <connections/>
+</ui>

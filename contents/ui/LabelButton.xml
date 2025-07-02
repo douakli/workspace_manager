@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<palette>
+ <active>
+  <colorrole role="Highlight">
+   <brush brushstyle="SolidPattern">
+    <color alpha="0">
+     <red>61</red>
+     <green>174</green>
+     <blue>233</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Accent">
+   <brush brushstyle="SolidPattern">
+    <color alpha="0">
+     <red>61</red>
+     <green>174</green>
+     <blue>233</blue>
+    </color>
+   </brush>
+  </colorrole>
+ </active>
+ <inactive>
+  <colorrole role="Highlight">
+   <brush brushstyle="SolidPattern">
+    <color alpha="0">
+     <red>61</red>
+     <green>174</green>
+     <blue>233</blue>
+    </color>
+   </brush>
+  </colorrole>
+  <colorrole role="Accent">
+   <brush brushstyle="SolidPattern">
+    <color alpha="0">
+     <red>61</red>
+     <green>174</green>
+     <blue>233</blue>
+    </color>
+   </brush>
+  </colorrole>
+ </inactive>
+ <disabled>
+  <colorrole role="Accent">
+   <brush brushstyle="SolidPattern">
+    <color alpha="0">
+     <red>61</red>
+     <green>174</green>
+     <blue>233</blue>
+    </color>
+   </brush>
+  </colorrole>
+ </disabled>
+</palette>
