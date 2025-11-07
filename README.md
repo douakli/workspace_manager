@@ -7,10 +7,10 @@ A kwin script that keeps virtual desktops around the active virtual desktop in a
 ## Warning
 Some features of this script require KWin patches.
 
-Having more than one row of desktops requires KWin(Wayland) 6.5+
+Having more than one row of desktops requires KWin(Wayland) 6.5+. 
 For KWin X11, the following patch is required: https://invent.kde.org/plasma/kwin/-/merge_requests/7773/diffs
 
-For full activity overlap optimization support, the following patch is required: https://invent.kde.org/plasma/kwin/-/merge_requests/7811/diffs
+For full activity overlap optimization support, the following patch is required: https://invent.kde.org/plasma/kwin/-/merge_requests/7811/diffs.
 I did write a compat layer for the API to get around the kwin dev's refusal.
 But turns out it doesn't work, and I keep landing on the wrong virtual desktop when switching activity.
 I recommend disabling activity overlap optimization without a patched KWin.
@@ -33,7 +33,7 @@ index a8deb91314..a88ab8a9f5 100644
  inline uint VirtualDesktopManager::count() const
 ```
 
-Note that KWin developer ever tested their code and effects with a higher virtual desktop count than 20.
+Note that KWin developer never tested their code and effects with a higher virtual desktop count than 20.
 Weird things might happen.
 Also, from my experience, KWin gets really slow with a higher number of Virtual Desktops.
 
