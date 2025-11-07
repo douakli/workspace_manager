@@ -12,11 +12,11 @@
       <default>false</default>
     </entry>
     <entry name="optimiseActivityOverlap" type="bool">
-      <default>true</default>
+      <default>false</default>
     </entry>
     <!-- Advanced -->
     <entry name="swapDesktopsWhenPossible" type="bool">
-      <default>true</default>
+      <default>false</default>
     </entry>
     <entry name="alwaysUseActivityLastVirtualDesktopCompatibilityLayer" type="bool">
       <default>false</default>

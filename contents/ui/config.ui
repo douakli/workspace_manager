@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <author>Dorian OUAKLI</author>
- <class>KWin::DynamicWorkspacesConfigForm</class>
- <widget class="QWidget" name="KWin::DynamicWorkspacesConfigForm">
+ <class>KWin::WorkspaceManagerConfigForm</class>
+ <widget class="QWidget" name="KWin::WorkspaceManagerConfigForm">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1209</width>
-    <height>914</height>
+    <width>1309</width>
+    <height>574</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dynamic Workspaces</string>
+   <string>Workspace Manager</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -40,7 +40,7 @@
        </sizepolicy>
       </property>
       <attribute name="title">
-       <string>Tab 1</string>
+       <string>Desktops</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_4">
        <item row="0" column="0">
@@ -171,6 +171,9 @@
                 </item>
                 <item row="1" column="0">
                  <widget class="QPushButton" name="pushButton_15">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -248,6 +251,9 @@
                 </item>
                 <item row="1" column="1">
                  <widget class="KKeySequenceWidget" name="kshortcutwidget_7">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -258,6 +264,9 @@
                 </item>
                 <item row="2" column="0">
                  <widget class="QPushButton" name="pushButton_16">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -335,6 +344,9 @@
                 </item>
                 <item row="2" column="1">
                  <widget class="KKeySequenceWidget" name="kshortcutwidget_8">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -539,6 +551,9 @@ QPushButton::pressed {
                 </item>
                 <item row="1" column="0">
                  <widget class="QPushButton" name="pushButton_9">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -616,6 +631,9 @@ QPushButton::pressed {
                 </item>
                 <item row="1" column="1">
                  <widget class="KKeySequenceWidget" name="kshortcutwidget_3">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -626,6 +644,9 @@ QPushButton::pressed {
                 </item>
                 <item row="2" column="0">
                  <widget class="QPushButton" name="pushButton_10">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -703,6 +724,9 @@ QPushButton::pressed {
                 </item>
                 <item row="2" column="1">
                  <widget class="KKeySequenceWidget" name="kshortcutwidget_4">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -886,6 +910,9 @@ QPushButton::pressed {
                 </item>
                 <item row="1" column="0">
                  <widget class="QPushButton" name="pushButton_6">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -963,6 +990,9 @@ QPushButton::pressed {
                 </item>
                 <item row="1" column="1">
                  <widget class="KKeySequenceWidget" name="kshortcutwidget">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -973,6 +1003,9 @@ QPushButton::pressed {
                 </item>
                 <item row="2" column="0">
                  <widget class="QPushButton" name="pushButton_7">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -1050,6 +1083,9 @@ QPushButton::pressed {
                 </item>
                 <item row="2" column="1">
                  <widget class="KKeySequenceWidget" name="kshortcutwidget_2">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -1194,6 +1230,9 @@ QPushButton::pressed {
                 </item>
                 <item row="1" column="0">
                  <widget class="QPushButton" name="pushButton_12">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -1271,6 +1310,9 @@ QPushButton::pressed {
                 </item>
                 <item row="1" column="1">
                  <widget class="KKeySequenceWidget" name="kshortcutwidget_5">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -1281,6 +1323,9 @@ QPushButton::pressed {
                 </item>
                 <item row="2" column="0">
                  <widget class="QPushButton" name="pushButton_13">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -1358,6 +1403,9 @@ QPushButton::pressed {
                 </item>
                 <item row="2" column="1">
                  <widget class="KKeySequenceWidget" name="kshortcutwidget_6">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -1425,7 +1473,7 @@ QPushButton::pressed {
             <item>
              <widget class="QCheckBox" name="kcfg_optimiseActivityOverlap">
               <property name="text">
-               <string>Optimise activities overlap</string>
+               <string>Optimise activities overlap (Patch required)</string>
               </property>
              </widget>
             </item>
@@ -1440,7 +1488,7 @@ QPushButton::pressed {
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>0</height>
+                <height>22</height>
                </size>
               </property>
               <property name="title">
@@ -1453,14 +1501,14 @@ QPushButton::pressed {
                <item>
                 <widget class="QCheckBox" name="kcfg_swapDesktopsWhenPossible">
                  <property name="text">
-                  <string>Swap desktops when possible</string>
+                  <string>Swap desktops when possible (Experimental)</string>
                  </property>
                 </widget>
                </item>
                <item>
                 <widget class="QCheckBox" name="kcfg_alwaysUseActivityLastVirtualDesktopCompatibilityLayer">
                  <property name="text">
-                  <string>Always use lastVirtualDesktop compat layer</string>
+                  <string>Always use lastVirtualDesktop compat layer (Experimental)</string>
                  </property>
                 </widget>
                </item>
@@ -1645,23 +1693,297 @@ QPushButton::pressed {
            </layout>
           </widget>
          </item>
+         <item row="0" column="2">
+          <widget class="QGroupBox" name="groupBox_7">
+           <property name="title">
+            <string>Automatic Edge Policies Description</string>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_7">
+            <item row="0" column="0">
+             <layout class="QFormLayout" name="formLayout_7">
+              <property name="formAlignment">
+               <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+              </property>
+              <item row="0" column="0">
+               <widget class="QPushButton" name="pushButton_17">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="palette">
+                 <palette>
+                  <active>
+                   <colorrole role="Highlight">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="0">
+                      <red>61</red>
+                      <green>174</green>
+                      <blue>233</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                   <colorrole role="Accent">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="0">
+                      <red>61</red>
+                      <green>174</green>
+                      <blue>233</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </active>
+                  <inactive>
+                   <colorrole role="Highlight">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="0">
+                      <red>61</red>
+                      <green>174</green>
+                      <blue>233</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                   <colorrole role="Accent">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="0">
+                      <red>61</red>
+                      <green>174</green>
+                      <blue>233</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </inactive>
+                  <disabled>
+                   <colorrole role="Accent">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="0">
+                      <red>61</red>
+                      <green>174</green>
+                      <blue>233</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </disabled>
+                 </palette>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
+                <property name="text">
+                 <string>Dynamic:</string>
+                </property>
+                <property name="icon">
+                 <iconset theme="view-refresh"/>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Always keep a row/column of empty desktops.</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QPushButton" name="pushButton_18">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="palette">
+                 <palette>
+                  <active>
+                   <colorrole role="Highlight">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="0">
+                      <red>61</red>
+                      <green>174</green>
+                      <blue>233</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                   <colorrole role="Accent">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="0">
+                      <red>61</red>
+                      <green>174</green>
+                      <blue>233</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </active>
+                  <inactive>
+                   <colorrole role="Highlight">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="0">
+                      <red>61</red>
+                      <green>174</green>
+                      <blue>233</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                   <colorrole role="Accent">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="0">
+                      <red>61</red>
+                      <green>174</green>
+                      <blue>233</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </inactive>
+                  <disabled>
+                   <colorrole role="Accent">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="0">
+                      <red>61</red>
+                      <green>174</green>
+                      <blue>233</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </disabled>
+                 </palette>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
+                <property name="text">
+                 <string>Shrink:</string>
+                </property>
+                <property name="icon">
+                 <iconset theme="list-remove"/>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>Remove rows/columns of empty desktops.</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QPushButton" name="pushButton_19">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="palette">
+                 <palette>
+                  <active>
+                   <colorrole role="Highlight">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="0">
+                      <red>61</red>
+                      <green>174</green>
+                      <blue>233</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                   <colorrole role="Accent">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="0">
+                      <red>61</red>
+                      <green>174</green>
+                      <blue>233</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </active>
+                  <inactive>
+                   <colorrole role="Highlight">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="0">
+                      <red>61</red>
+                      <green>174</green>
+                      <blue>233</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                   <colorrole role="Accent">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="0">
+                      <red>61</red>
+                      <green>174</green>
+                      <blue>233</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </inactive>
+                  <disabled>
+                   <colorrole role="Accent">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="0">
+                      <red>61</red>
+                      <green>174</green>
+                      <blue>233</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </disabled>
+                 </palette>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
+                <property name="text">
+                 <string>Ignore:</string>
+                </property>
+                <property name="icon">
+                 <iconset theme="dialog-cancel"/>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>Do not add nor remove rows/columns on this edge.</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QGroupBox" name="groupBox_8">
+           <property name="title">
+            <string>Notes</string>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_5">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Take a look at the &lt;a href=&quot;https://github.com/douakli/workspace_manager&quot;&gt;Documentation&lt;/a&gt; for details on how to get more features</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+              <property name="openExternalLinks">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
         </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab_2">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <attribute name="title">
-       <string>Tab 2</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout_6">
-       <item row="0" column="0">
-        <layout class="QGridLayout" name="gridLayout_5"/>
        </item>
       </layout>
      </widget>

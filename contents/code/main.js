@@ -11,11 +11,11 @@ function trace(...args) { if (LOG_LEVEL <= 0)  log(...args); }
 const CFG_CURRENT_DESKTOP_IS_ALWAYS_USED = "currentDesktopIsAlwaysUsed";
 const CFG_CURRENT_DESKTOP_IS_ALWAYS_USED_DEFAULT = false;
 const CFG_OPTIMISE_ACTIVITY_OVERLAP = "optimiseActivityOverlap";
-const CFG_OPTIMISE_ACTIVITY_OVERLAP_DEFAULT = true;
+const CFG_OPTIMISE_ACTIVITY_OVERLAP_DEFAULT = false;
 
 // Advanced config
 const CFG_SWAP_DESKTOPS_WHEN_POSSIBLE = "swapDesktopsWhenPossible"
-const CFG_SWAP_DESKTOPS_WHEN_POSSIBLE_DEFAULT = true;
+const CFG_SWAP_DESKTOPS_WHEN_POSSIBLE_DEFAULT = false;
 const CFG_ALWAYS_USE_ACTIVITY_LAST_VIRTUAL_DESKTOP_COMPATIBILITY_LAYER = "alwaysUseActivityLastVirtualDesktopCompatibilityLayer"
 const CFG_ALWAYS_USE_ACTIVITY_LAST_VIRTUAL_DESKTOP_COMPATIBILITY_LAYER_DEFAULT = false;
 const CFG_CURRENT_DESKTOP_CHANGED_DELAY = "currentDesktopChangedDelay";
@@ -71,7 +71,7 @@ var lastVirtualDesktopCompatLayer;
 
 class LastVirtualDesktopCompatLayer {
     constructor() {
-        this.native = workspace.lastVirtualDesktop && workspace.lastVirtualDesktop(workspace.currentActivity) && !readConfig(CFG_ALWAYS_USE_ACTIVITY_LAST_VIRTUAL_DESKTOP_COMPATIBILITY_LAYER, CFG_ALWAYS_USE_ACTIVITY_LAST_VIRTUAL_DESKTOP_COMPATIBILITY_LAYER_DEFAULT);
+        this.native = workspace.lastVirtualDesktop && !readConfig(CFG_ALWAYS_USE_ACTIVITY_LAST_VIRTUAL_DESKTOP_COMPATIBILITY_LAYER, CFG_ALWAYS_USE_ACTIVITY_LAST_VIRTUAL_DESKTOP_COMPATIBILITY_LAYER_DEFAULT);
 
         if (!this.native) {
             this.e_tracker = {};
@@ -248,7 +248,7 @@ const _windowsOfDesktop = function(desktop, activity) {
  * @param checkForCurrentDesktop force check for the current desktop
  */
 const _areDesktopsEmpty = function(desktops, checkForCurrentDesktop, activity) {
-    return desktops.reduce((acc, desktop) => {return acc && _windowsOfDesktop(desktop, activity).length === 0 && ((!checkForCurrentDesktop && !readConfig(CFG_CURRENT_DESKTOP_IS_ALWAYS_USED, CFG_CURRENT_DESKTOP_IS_ALWAYS_USED_DEFAULT)) || !(activity? desktop == (workspace.currentActivity == activity? workspace.currentDesktop : lastVirtualDesktopCompatLayer.lastVirtualDesktop(activity)) : [workspace.currentDesktop].concat(workspace.activities.filter((act) => workspace.currentActivity != act).map((act) => lastVirtualDesktopCompatLayer.lastVirtualDesktop(act))).includes(desktop)))}, true)
+    return desktops.reduce((acc, desktop) => {return acc && _windowsOfDesktop(desktop, activity).filter(win => !win.skipPager && !win.onAllDesktops && !win.skipSwitcher && !win.skipTaskbar).length === 0 && ((!checkForCurrentDesktop && !readConfig(CFG_CURRENT_DESKTOP_IS_ALWAYS_USED, CFG_CURRENT_DESKTOP_IS_ALWAYS_USED_DEFAULT)) || !(activity? desktop == (workspace.currentActivity == activity? workspace.currentDesktop : lastVirtualDesktopCompatLayer.lastVirtualDesktop(activity)) : [workspace.currentDesktop].concat(workspace.activities.filter((act) => workspace.currentActivity != act).map((act) => lastVirtualDesktopCompatLayer.lastVirtualDesktop(act))).includes(desktop)))}, true)
 }
 
 
@@ -595,6 +595,20 @@ const maybeUpdateLayout = function(recursed) {
         return maybeUpdateLayout(true);
     }
 
+    // Desktop Coordinate naming
+
+    for (const desktop of workspace.desktops) {
+        const indexOfDesktop = workspace.desktops.indexOf(desktop);
+        const i = Math.floor(indexOfDesktop / cols) + 1;
+        const j = (indexOfDesktop % cols) + 1;
+
+        const targetName = toColumn(j) + i.toString()
+
+        if (desktop.name != targetName) {
+            desktop.name = targetName;
+        }
+    }
+
     // -- Up --
 
     const firstRow = _getRow(0);
@@ -695,7 +709,7 @@ const maybeUpdateLayout = function(recursed) {
                 continue;
             }
 
-            const emptyActivity = _areDesktopsEmpty(workspace.desktops, false, activity)
+            const emptyActivity = _areDesktopsEmpty(workspace.desktops, false, activity);// || true;
 
             const shiftUp = function() {
                 const firstRow = _getRow(0);
@@ -793,20 +807,6 @@ const maybeUpdateLayout = function(recursed) {
                     }
                 }
             }
-        }
-    }
-
-    // Desktop Coordinate naming
-
-    for (const desktop of workspace.desktops) {
-        const indexOfDesktop = workspace.desktops.indexOf(desktop);
-        const i = Math.floor(indexOfDesktop / cols) + 1;
-        const j = (indexOfDesktop % cols) + 1;
-
-        const targetName = toColumn(j) + i.toString()
-
-        if (desktop.name != targetName) {
-            desktop.name = targetName;
         }
     }
 }
