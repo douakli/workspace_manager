@@ -1,6 +1,7 @@
 # Workspace Manager
 
 Inspired by the amazing [Dynamic Workspaces](https://github.com/d86leader/dynamic_workspaces/) script.
+Since I'm not reusing the code, I figured it would be appropriate to change the license to what I prefer.
 
 A kwin script that keeps virtual desktops around the active virtual desktop in a 2D grid.
 
