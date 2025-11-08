@@ -10,7 +10,7 @@
     , "Id": "workspace_manager"
     , "License": "MIT"
     , "Name": "Workspace Manager"
-    , "Version": "1.0.0"
+    , "Version": "1.0.2"
     }
 , "X-KDE-PluginKeyword": "workspaces"
 
