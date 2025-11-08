@@ -21,6 +21,9 @@
     <entry name="alwaysUseActivityLastVirtualDesktopCompatibilityLayer" type="bool">
       <default>false</default>
     </entry>
+    <entry name="maxVirtualDesktops" type="Int">
+      <default>20</default>
+    </entry>
     <entry name="currentDesktopChangedDelay" type="Int">
       <default>0</default>
     </entry>

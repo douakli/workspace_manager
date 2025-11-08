@@ -1513,6 +1513,20 @@ QPushButton::pressed {
                 </widget>
                </item>
                <item>
+                <layout class="QFormLayout" name="formLayout_8">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="maximumVirtualDesktopsLabel">
+                   <property name="text">
+                    <string>Maximum Virtual Desktops</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QSpinBox" name="kcfg_maxVirtualDesktops"/>
+                 </item>
+                </layout>
+               </item>
+               <item>
                 <widget class="QGroupBox" name="groupBox_6">
                  <property name="title">
                   <string>General Delays before updating</string>

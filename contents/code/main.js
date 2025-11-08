@@ -18,6 +18,8 @@ const CFG_SWAP_DESKTOPS_WHEN_POSSIBLE = "swapDesktopsWhenPossible"
 const CFG_SWAP_DESKTOPS_WHEN_POSSIBLE_DEFAULT = false;
 const CFG_ALWAYS_USE_ACTIVITY_LAST_VIRTUAL_DESKTOP_COMPATIBILITY_LAYER = "alwaysUseActivityLastVirtualDesktopCompatibilityLayer"
 const CFG_ALWAYS_USE_ACTIVITY_LAST_VIRTUAL_DESKTOP_COMPATIBILITY_LAYER_DEFAULT = false;
+const CFG_MAX_VIRTUAL_DESKTOPS = "maxVirtualDesktops";
+const CFG_MAX_VIRTUAL_DESKTOPS_DEFAULT = 20;
 const CFG_CURRENT_DESKTOP_CHANGED_DELAY = "currentDesktopChangedDelay";
 const CFG_CURRENT_DESKTOP_CHANGED_DELAY_DEFAULT = 0;
 const CFG_WINDOW_MOVED_DELAY = "windowMovedDelay";
@@ -431,9 +433,15 @@ const _shiftClientsLeft = function(start, end, offset, noFollow, targetActivity)
  * Adds a new empty row of desktops at the bottom of the grid.
  */
 const appendRow = function() {
+    const maxVirtualDesktops = readConfig(CFG_MAX_VIRTUAL_DESKTOPS, CFG_MAX_VIRTUAL_DESKTOPS_DEFAULT);
+
     const rows = workspace.desktopGridHeight
     const cols = workspace.desktopGridWidth
     const count = workspace.desktops.length
+
+    if (count + cols > maxVirtualDesktops) {
+        return;
+    }
 
     _addDesktops(cols);
 
@@ -444,9 +452,15 @@ const appendRow = function() {
  * Adds a new empty row of desktops at the top of the grid.
  */
 const prependRow = function() {
+    const maxVirtualDesktops = readConfig(CFG_MAX_VIRTUAL_DESKTOPS, CFG_MAX_VIRTUAL_DESKTOPS_DEFAULT);
+
     const count = workspace.desktops.length;
     const rows = workspace.desktopGridHeight;
     const cols = workspace.desktopGridWidth;
+
+    if (count + cols > maxVirtualDesktops) {
+        return;
+    }
 
     appendRow();
     _shiftClientsRight(0, count - 1, cols);
@@ -456,11 +470,18 @@ const prependRow = function() {
  * Adds a new empty column of desktops at the right of the grid.
  */
 const appendColumn = function() {
+    const maxVirtualDesktops = readConfig(CFG_MAX_VIRTUAL_DESKTOPS, CFG_MAX_VIRTUAL_DESKTOPS_DEFAULT);
+
     const count = workspace.desktops.length;
     const rows = workspace.desktopGridHeight;
     const cols = workspace.desktopGridWidth;
 
+    if (count + rows > maxVirtualDesktops) {
+        return;
+    }
+
     _addDesktops(rows);
+
     for (let i = rows - 1; i > 0; i--) {
 
         // The way I thought about the arithmetics here is:
@@ -476,9 +497,15 @@ const appendColumn = function() {
  * Adds a new empty column of desktops at the left of the grid.
  */
 const prependColumn = function() {
+    const maxVirtualDesktops = readConfig(CFG_MAX_VIRTUAL_DESKTOPS, CFG_MAX_VIRTUAL_DESKTOPS_DEFAULT);
+
     const count = workspace.desktops.length;
     const rows = workspace.desktopGridHeight;
     const cols = workspace.desktopGridWidth;
+
+    if (count + rows > maxVirtualDesktops) {
+        return;
+    }
 
     _addDesktops(rows);
     for (let i = rows - 1; i >= 0; i--) {
@@ -568,13 +595,18 @@ const maybeUpdateLayout = function(recursed) {
 
             try {
             updating = true;
-            maybeUpdateLayout(true);
+            maybeUpdateLayout(1);
             } finally {
                 updating = false;
                 return;
             }
 
         }
+    }
+
+    // Too many recursions.
+    if (recursed > 30) {
+        return;
     }
 
     const count = workspace.desktops.length;
@@ -592,7 +624,7 @@ const maybeUpdateLayout = function(recursed) {
 
     if (count < 1) {
         _addDesktop();
-        return maybeUpdateLayout(true);
+        return maybeUpdateLayout(recursed + 1);
     }
 
     // Desktop Coordinate naming
@@ -618,7 +650,7 @@ const maybeUpdateLayout = function(recursed) {
         // Ensure there is an available row.
         if (topEdgePolicy <= 0) {
             prependRow();
-            return maybeUpdateLayout(true);
+            return maybeUpdateLayout(recursed + 1);
         }
     } else if (rows >= 2) {
         // Cleanup if too many rows.
@@ -627,7 +659,7 @@ const maybeUpdateLayout = function(recursed) {
 
         if (topEdgePolicy <= 1) {
             if (isSecondRowEmpty || topEdgePolicy == 1) {
-                if (deleteRow(0)) return maybeUpdateLayout(true);
+                if (deleteRow(0)) return maybeUpdateLayout(recursed + 1);
             }
         }
     }
@@ -641,7 +673,7 @@ const maybeUpdateLayout = function(recursed) {
         // Ensure there is an available row.
         if (bottomEdgePolicy <= 0) {
             appendRow();
-            return maybeUpdateLayout(true);
+            return maybeUpdateLayout(recursed + 1);
         }
     } else if (rows >= 2) {
         // Cleanup if too many rows.
@@ -650,7 +682,7 @@ const maybeUpdateLayout = function(recursed) {
 
         if (bottomEdgePolicy <= 1) {
             if (isPenultimateRowEmpty || bottomEdgePolicy == 1) {
-                if (deleteRow(rows - 1)) return maybeUpdateLayout(true);
+                if (deleteRow(rows - 1)) return maybeUpdateLayout(recursed + 1);
             }
         }
     }
@@ -664,7 +696,7 @@ const maybeUpdateLayout = function(recursed) {
         // Ensure there is an available column.
         if (leftEdgePolicy <= 0) {
             prependColumn();
-            return maybeUpdateLayout(true);
+            return maybeUpdateLayout(recursed + 1);
         }
     } else if (cols >= 2) {
         // Cleanup if too many columns.
@@ -673,7 +705,7 @@ const maybeUpdateLayout = function(recursed) {
 
         if (leftEdgePolicy <= 1) {
             if (isSecondColumnEmpty || leftEdgePolicy == 1) {
-                if (deleteColumn(0)) return maybeUpdateLayout(true);
+                if (deleteColumn(0)) return maybeUpdateLayout(recursed + 1);
             }
         }
     }
@@ -686,7 +718,7 @@ const maybeUpdateLayout = function(recursed) {
         // Ensure there is an available column.
         if (rightEdgePolicy <= 0) {
             appendColumn();
-            return maybeUpdateLayout(true);
+            return maybeUpdateLayout(recursed + 1);
         }
     } else if (cols >= 2) {
         // Cleanup if too many columns.
@@ -695,7 +727,7 @@ const maybeUpdateLayout = function(recursed) {
 
         if (rightEdgePolicy <= 1) {
             if (isPenultimateColumnEmpty || rightEdgePolicy == 1) {
-                if (deleteColumn(cols - 1)) return maybeUpdateLayout(true);
+                if (deleteColumn(cols - 1)) return maybeUpdateLayout(recursed + 1);
             }
         }
     }
@@ -728,14 +760,14 @@ const maybeUpdateLayout = function(recursed) {
                 if (rows >= 2) {
                     if (_areDesktopsEmpty(_getRow(0), true, activity)) {
                         shiftUp();
-                        return maybeUpdateLayout(true);
+                        return maybeUpdateLayout(recursed + 1);
                     }
                 }
             } else if (topEdgePolicy == 0) {
                 if (rows >= 3) {
                     if (_areDesktopsEmpty(_getRow(0).concat(_getRow(1)), emptyActivity, activity)) {
                         shiftUp();
-                        return maybeUpdateLayout(true);
+                        return maybeUpdateLayout(recursed + 1);
                     }
                 }
             } else if (_getRow(rows-1).length == cols) {
@@ -743,14 +775,14 @@ const maybeUpdateLayout = function(recursed) {
                     if (rows >= 2) {
                         if (_areDesktopsEmpty(_getRow(rows-1), true, activity)) {
                             shiftDown();
-                            return maybeUpdateLayout(true);
+                            return maybeUpdateLayout(recursed + 1);
                         }
                     }
                 } else if (bottomEdgePolicy == 0) {
                     if (rows >= 3) {
                         if (_areDesktopsEmpty(_getRow(rows-1).concat(_getRow(rows-2)), emptyActivity, activity)) {
                             shiftDown();
-                            return maybeUpdateLayout(true);
+                            return maybeUpdateLayout(recursed + 1);
                         }
                     }
                 }
@@ -780,14 +812,14 @@ const maybeUpdateLayout = function(recursed) {
                 if (cols >= 2) {
                     if (_areDesktopsEmpty(_getColumn(0), true, activity)) {
                         shiftLeft();
-                        return maybeUpdateLayout(true);
+                        return maybeUpdateLayout(recursed + 1);
                     }
                 }
             } else if (leftEdgePolicy == 0) {
                 if (cols >= 3) {
                     if (_areDesktopsEmpty(_getColumn(0).concat(_getColumn(1)), emptyActivity, activity)) {
                         shiftLeft();
-                        return maybeUpdateLayout(true);
+                        return maybeUpdateLayout(recursed + 1);
                     }
                 }
             } else if (_getRow(rows-1).length == cols) {
@@ -795,14 +827,14 @@ const maybeUpdateLayout = function(recursed) {
                     if (cols >= 2) {
                         if (_areDesktopsEmpty(_getColumn(cols-1), true, activity)) {
                             shiftRight();
-                            return maybeUpdateLayout(true);
+                            return maybeUpdateLayout(recursed + 1);
                         }
                     }
                 } else if (rightEdgePolicy == 0) {
                     if (cols >= 3) {
                         if (_areDesktopsEmpty(_getColumn(cols-1).concat(_getColumn(cols-2)), emptyActivity, activity)) {
                             shiftRight();
-                            return maybeUpdateLayout(true);
+                            return maybeUpdateLayout(recursed + 1);
                         }
                     }
                 }
