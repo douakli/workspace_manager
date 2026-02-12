@@ -685,6 +685,12 @@ const maybeUpdateLayout = function(recursed) {
                         return maybeUpdateLayout(recursed + 1);
                     }
                 }
+                if (rows >= 2 && _getRow(rows-1).length == cols
+                    && !_areDesktopsEmpty(_getRow(0), false, activity)
+                    && _areDesktopsEmpty(_getRow(rows-1), false, activity)) {
+                    shiftDown();
+                    return maybeUpdateLayout(recursed + 1);
+                }
             } else if (_getRow(rows-1).length == cols) {
                 if (bottomEdgePolicy == 1) {
                     if (rows >= 2) {
@@ -699,6 +705,12 @@ const maybeUpdateLayout = function(recursed) {
                             shiftDown();
                             return maybeUpdateLayout(recursed + 1);
                         }
+                    }
+                    if (rows >= 2
+                        && !_areDesktopsEmpty(_getRow(rows-1), false, activity)
+                        && _areDesktopsEmpty(_getRow(0), false, activity)) {
+                        shiftUp();
+                        return maybeUpdateLayout(recursed + 1);
                     }
                 }
             }
@@ -737,6 +749,12 @@ const maybeUpdateLayout = function(recursed) {
                         return maybeUpdateLayout(recursed + 1);
                     }
                 }
+                if (cols >= 2 && _getRow(rows-1).length == cols
+                    && !_areDesktopsEmpty(_getColumn(0), false, activity)
+                    && _areDesktopsEmpty(_getColumn(cols-1), false, activity)) {
+                    shiftRight();
+                    return maybeUpdateLayout(recursed + 1);
+                }
             } else if (_getRow(rows-1).length == cols) {
                 if (rightEdgePolicy == 1) {
                     if (cols >= 2) {
@@ -751,6 +769,12 @@ const maybeUpdateLayout = function(recursed) {
                             shiftRight();
                             return maybeUpdateLayout(recursed + 1);
                         }
+                    }
+                    if (cols >= 2
+                        && !_areDesktopsEmpty(_getColumn(cols-1), false, activity)
+                        && _areDesktopsEmpty(_getColumn(0), false, activity)) {
+                        shiftLeft();
+                        return maybeUpdateLayout(recursed + 1);
                     }
                 }
             }
