@@ -908,6 +908,24 @@ const onWindowAdded = function(client) {
     client.closed.connect(onWindowClosed);
 }
 
+registerShortcut(
+    "WorkspaceManager: Move All Windows to Current Output",
+    "Workspace Manager: Move All Windows to Current Output",
+    "",
+    function() {
+        const target = workspace.activeScreen;
+        if (!target) return;
+
+        const windows = workspace.windowList();
+        for (let i = 0; i < windows.length; i++) {
+            const win = windows[i];
+            if (win.normalWindow && win.moveableAcrossScreens && !win.onAllDesktops) {
+                workspace.sendClientToScreen(win, target);
+            }
+        }
+    }
+);
+
 const registerListeners = function() {
     workspace.currentDesktopChanged.connect(onCurrentDesktopChanged);
     workspace.windowAdded.connect(onWindowAdded);
