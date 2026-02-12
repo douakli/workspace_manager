@@ -13,6 +13,16 @@ const CFG_CURRENT_DESKTOP_IS_ALWAYS_USED_DEFAULT = false;
 const CFG_OPTIMISE_ACTIVITY_OVERLAP = "optimiseActivityOverlap";
 const CFG_OPTIMISE_ACTIVITY_OVERLAP_DEFAULT = false;
 
+// Middle cleanup config
+const CFG_CLEANUP_MIDDLE_ROW = "cleanupMiddleRow";
+const CFG_CLEANUP_MIDDLE_ROW_DEFAULT = false;
+const CFG_CLEANUP_MIDDLE_ROW_DIRECTION = "cleanupMiddleRowDirection";
+const CFG_CLEANUP_MIDDLE_ROW_DIRECTION_DEFAULT = 0;
+const CFG_CLEANUP_MIDDLE_COL = "cleanupMiddleCol";
+const CFG_CLEANUP_MIDDLE_COL_DEFAULT = false;
+const CFG_CLEANUP_MIDDLE_COL_DIRECTION = "cleanupMiddleColDirection";
+const CFG_CLEANUP_MIDDLE_COL_DIRECTION_DEFAULT = 0;
+
 // Advanced config
 const CFG_SWAP_DESKTOPS_WHEN_POSSIBLE = "swapDesktopsWhenPossible"
 const CFG_SWAP_DESKTOPS_WHEN_POSSIBLE_DEFAULT = false;
@@ -42,6 +52,17 @@ const CFG_RIGHT_EDGE_POLICY = "rightEdgePolicy";
 const CFG_RIGHT_EDGE_POLICY_DEFAULT = 0;
 const CFG_BOTTOM_EDGE_POLICY = "bottomEdgePolicy";
 const CFG_BOTTOM_EDGE_POLICY_DEFAULT = 0;
+
+function osd(message) {
+    callDBus(
+        "org.freedesktop.Notifications",
+        "/org/kde/osdService",
+        "org.kde.osdService",
+        "showText",
+        "window-list",
+        message
+    );
+}
 
 
 function toColumn(n) {
@@ -605,7 +626,7 @@ const maybeUpdateLayout = function(recursed) {
     }
 
     // Too many recursions.
-    if (recursed > 30) {
+    if (recursed > 10) {
         return;
     }
 
@@ -618,6 +639,12 @@ const maybeUpdateLayout = function(recursed) {
     const rightEdgePolicy = readConfig(CFG_RIGHT_EDGE_POLICY, CFG_RIGHT_EDGE_POLICY_DEFAULT);
     const bottomEdgePolicy = readConfig(CFG_BOTTOM_EDGE_POLICY, CFG_BOTTOM_EDGE_POLICY_DEFAULT);
     const optimiseActivityOverlap = readConfig(CFG_OPTIMISE_ACTIVITY_OVERLAP, CFG_OPTIMISE_ACTIVITY_OVERLAP_DEFAULT);
+
+
+    const cleanupMiddleRow = readConfig(CFG_CLEANUP_MIDDLE_ROW, CFG_CLEANUP_MIDDLE_ROW_DEFAULT);
+    const cleanupMiddleRowDirection = readConfig(CFG_CLEANUP_MIDDLE_ROW_DIRECTION, CFG_CLEANUP_MIDDLE_ROW_DIRECTION_DEFAULT);
+    const cleanupMiddleCol = readConfig(CFG_CLEANUP_MIDDLE_COL, CFG_CLEANUP_MIDDLE_COL_DEFAULT);
+    const cleanupMiddleColDirection = readConfig(CFG_CLEANUP_MIDDLE_COL_DIRECTION, CFG_CLEANUP_MIDDLE_COL_DIRECTION_DEFAULT);
 
 
     // Always have at least one Desktop to have a valid grid.
@@ -641,102 +668,10 @@ const maybeUpdateLayout = function(recursed) {
         }
     }
 
-    // -- Up --
-
-    const firstRow = _getRow(0);
-    const isFirstRowEmpty = _areDesktopsEmpty(firstRow);
-
-    if (!isFirstRowEmpty) {
-        // Ensure there is an available row.
-        if (topEdgePolicy <= 0) {
-            prependRow();
-            return maybeUpdateLayout(recursed + 1);
-        }
-    } else if (rows >= 2) {
-        // Cleanup if too many rows.
-        const secondRow = _getRow(1);
-        const isSecondRowEmpty = _areDesktopsEmpty(secondRow);
-
-        if (topEdgePolicy <= 1) {
-            if (isSecondRowEmpty || topEdgePolicy == 1) {
-                if (deleteRow(0)) return maybeUpdateLayout(recursed + 1);
-            }
-        }
-    }
-
-    // -- Down --
-
-    const lastRow = _getRow(rows - 1);
-    const isLastRowEmpty = _areDesktopsEmpty(lastRow);
-
-    if (!isLastRowEmpty) {
-        // Ensure there is an available row.
-        if (bottomEdgePolicy <= 0) {
-            appendRow();
-            return maybeUpdateLayout(recursed + 1);
-        }
-    } else if (rows >= 2) {
-        // Cleanup if too many rows.
-        const penultimateRow = _getRow(rows - 2);
-        const isPenultimateRowEmpty = _areDesktopsEmpty(penultimateRow);
-
-        if (bottomEdgePolicy <= 1) {
-            if (isPenultimateRowEmpty || bottomEdgePolicy == 1) {
-                if (deleteRow(rows - 1)) return maybeUpdateLayout(recursed + 1);
-            }
-        }
-    }
-
-    // -- Left --
-
-    const firstColumn = _getColumn(0);
-    const isFirstColumnEmpty = _areDesktopsEmpty(firstColumn);
-
-    if (!isFirstColumnEmpty) {
-        // Ensure there is an available column.
-        if (leftEdgePolicy <= 0) {
-            prependColumn();
-            return maybeUpdateLayout(recursed + 1);
-        }
-    } else if (cols >= 2) {
-        // Cleanup if too many columns.
-        const secondColumn = _getColumn(1);
-        const isSecondColumnEmpty = _areDesktopsEmpty(secondColumn);
-
-        if (leftEdgePolicy <= 1) {
-            if (isSecondColumnEmpty || leftEdgePolicy == 1) {
-                if (deleteColumn(0)) return maybeUpdateLayout(recursed + 1);
-            }
-        }
-    }
-
-    // -- Right --
-    const lastColumn = _getColumn(cols - 1);
-    const isLastColumnEmpty = _areDesktopsEmpty(lastColumn);
-
-    if (!isLastColumnEmpty) {
-        // Ensure there is an available column.
-        if (rightEdgePolicy <= 0) {
-            appendColumn();
-            return maybeUpdateLayout(recursed + 1);
-        }
-    } else if (cols >= 2) {
-        // Cleanup if too many columns.
-        const penultimateColumn = _getColumn(cols - 2);
-        const isPenultimateColumnEmpty = _areDesktopsEmpty(penultimateColumn);
-
-        if (rightEdgePolicy <= 1) {
-            if (isPenultimateColumnEmpty || rightEdgePolicy == 1) {
-                if (deleteColumn(cols - 1)) return maybeUpdateLayout(recursed + 1);
-            }
-        }
-    }
-
     // -- Activity Overlap --
 
     if (optimiseActivityOverlap) {
         for (const activity of workspace.activities) {
-
             if (activity != workspace.currentActivity && !lastVirtualDesktopCompatLayer.lastVirtualDesktop(activity)) {
                 continue;
             }
@@ -838,6 +773,114 @@ const maybeUpdateLayout = function(recursed) {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    // -- Middle Row Cleanup --
+
+    if (cleanupMiddleRow) {
+        // Find the first empty and non buffer row.
+        for (let i = 0 + (topEdgePolicy != 1); i < rows - (bottomEdgePolicy != 1); i++) {
+            if (_areDesktopsEmpty(_getRow(i))) {
+
+            }
+        }
+    }
+
+    // -- Middle Column Cleanup --
+
+    if (cleanupMiddleCol) {
+
+    }
+
+    // -- Up --
+
+    const firstRow = _getRow(0);
+    const isFirstRowEmpty = _areDesktopsEmpty(firstRow);
+
+    if (!isFirstRowEmpty) {
+        // Ensure there is an available row.
+        if (topEdgePolicy <= 0) {
+            prependRow();
+            return maybeUpdateLayout(recursed + 1);
+        }
+    } else if (rows >= 2) {
+        // Cleanup if too many rows.
+        const secondRow = _getRow(1);
+        const isSecondRowEmpty = _areDesktopsEmpty(secondRow);
+
+        if (topEdgePolicy <= 1) {
+            if (isSecondRowEmpty || topEdgePolicy == 1) {
+                if (deleteRow(0)) return maybeUpdateLayout(recursed + 1);
+            }
+        }
+    }
+
+    // -- Down --
+
+    const lastRow = _getRow(rows - 1);
+    const isLastRowEmpty = _areDesktopsEmpty(lastRow);
+
+    if (!isLastRowEmpty) {
+        // Ensure there is an available row.
+        if (bottomEdgePolicy <= 0) {
+            appendRow();
+            return maybeUpdateLayout(recursed + 1);
+        }
+    } else if (rows >= 2) {
+        // Cleanup if too many rows.
+        const penultimateRow = _getRow(rows - 2);
+        const isPenultimateRowEmpty = _areDesktopsEmpty(penultimateRow);
+
+        if (bottomEdgePolicy <= 1) {
+            if (isPenultimateRowEmpty || bottomEdgePolicy == 1) {
+                if (deleteRow(rows - 1)) return maybeUpdateLayout(recursed + 1);
+            }
+        }
+    }
+
+    // -- Left --
+
+    const firstColumn = _getColumn(0);
+    const isFirstColumnEmpty = _areDesktopsEmpty(firstColumn);
+
+    if (!isFirstColumnEmpty) {
+        // Ensure there is an available column.
+        if (leftEdgePolicy <= 0) {
+            prependColumn();
+            return maybeUpdateLayout(recursed + 1);
+        }
+    } else if (cols >= 2) {
+        // Cleanup if too many columns.
+        const secondColumn = _getColumn(1);
+        const isSecondColumnEmpty = _areDesktopsEmpty(secondColumn);
+
+        if (leftEdgePolicy <= 1) {
+            if (isSecondColumnEmpty || leftEdgePolicy == 1) {
+                if (deleteColumn(0)) return maybeUpdateLayout(recursed + 1);
+            }
+        }
+    }
+
+    // -- Right --
+    const lastColumn = _getColumn(cols - 1);
+    const isLastColumnEmpty = _areDesktopsEmpty(lastColumn);
+
+    if (!isLastColumnEmpty) {
+        // Ensure there is an available column.
+        if (rightEdgePolicy <= 0) {
+            appendColumn();
+            return maybeUpdateLayout(recursed + 1);
+        }
+    } else if (cols >= 2) {
+        // Cleanup if too many columns.
+        const penultimateColumn = _getColumn(cols - 2);
+        const isPenultimateColumnEmpty = _areDesktopsEmpty(penultimateColumn);
+
+        if (rightEdgePolicy <= 1) {
+            if (isPenultimateColumnEmpty || rightEdgePolicy == 1) {
+                if (deleteColumn(cols - 1)) return maybeUpdateLayout(recursed + 1);
             }
         }
     }
