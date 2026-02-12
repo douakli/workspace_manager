@@ -370,34 +370,24 @@ const _shiftClientsRight = function(start, end, offset, noFollow, targetActivity
     const currIndex = workspace.desktops.indexOf(current);
     const realOffset = offset === undefined ? 1 : offset;
 
-    if (realOffset) {
-
-        for (let i = 0; i<realOffset; i++) {
-            _shiftClientsRight(start+i, end+i, null, undefined, targetActivity);
-        }
-
-
-        if (!noFollow) {
-
-            workspace.activities.filter((activity) => (activity != workspace.currentActivity) && (!targetActivity || activity == targetActivity)).forEach((activity) => {
-                const actCurrent = lastVirtualDesktopCompatLayer.lastVirtualDesktop(activity);
-                const actCurrIndex = workspace.desktops.indexOf(actCurrent);
-
-                if (actCurrIndex >= start && actCurrIndex <= end) {
-                    lastVirtualDesktopCompatLayer.setLastVirtualDesktop(activity, workspace.desktops[actCurrIndex + realOffset]);
-                }
-            })
-
-            if (currIndex >= start && currIndex <= end && (!targetActivity || targetActivity == workspace.currentActivity)) {
-                workspace.currentDesktop = workspace.desktops[currIndex + realOffset];
-            }
-        }
-
-        return;
+    for (let i = end; i >= start; i--) {
+        _sendAllWindows(workspace.desktops[i], workspace.desktops[i + realOffset], targetActivity);
     }
 
-    for (let i = end; i >= start; i--) {
-        _sendAllWindows(workspace.desktops[i], workspace.desktops[i+1], targetActivity);
+    if (!noFollow) {
+
+        workspace.activities.filter((activity) => (activity != workspace.currentActivity) && (!targetActivity || activity == targetActivity)).forEach((activity) => {
+            const actCurrent = lastVirtualDesktopCompatLayer.lastVirtualDesktop(activity);
+            const actCurrIndex = workspace.desktops.indexOf(actCurrent);
+
+            if (actCurrIndex >= start && actCurrIndex <= end) {
+                lastVirtualDesktopCompatLayer.setLastVirtualDesktop(activity, workspace.desktops[actCurrIndex + realOffset]);
+            }
+        })
+
+        if (currIndex >= start && currIndex <= end && (!targetActivity || targetActivity == workspace.currentActivity)) {
+            workspace.currentDesktop = workspace.desktops[currIndex + realOffset];
+        }
     }
 }
 
@@ -417,36 +407,26 @@ const _shiftClientsRight = function(start, end, offset, noFollow, targetActivity
 const _shiftClientsLeft = function(start, end, offset, noFollow, targetActivity) {
     const current = workspace.currentDesktop;
     const currIndex = workspace.desktops.indexOf(current);
-    const count = workspace.desktops.length;
     const realOffset = offset === undefined ? 1 : offset;
 
-    if (realOffset) {
-
-        for (let i = 0; i<realOffset; i++) {
-            _shiftClientsLeft(start-i, end-i, null, undefined, targetActivity);
-        }
-
-        if (!noFollow) {
-
-            workspace.activities.filter((activity) => (activity != workspace.currentActivity) && (!targetActivity || activity == targetActivity)).forEach((activity) => {
-                const actCurrent = lastVirtualDesktopCompatLayer.lastVirtualDesktop(activity);
-                const actCurrIndex = workspace.desktops.indexOf(actCurrent);
-
-                if (actCurrIndex >= start && actCurrIndex <= end) {
-                    lastVirtualDesktopCompatLayer.setLastVirtualDesktop(activity, workspace.desktops[actCurrIndex - realOffset]);
-                }
-            })
-
-            if (currIndex >= start && currIndex <= end && (!targetActivity || targetActivity == workspace.currentActivity)) {
-                workspace.currentDesktop = workspace.desktops[currIndex - realOffset];
-            }
-    }
-
-        return;
-    }
-
     for (let i = start; i <= end; i++) {
-        _sendAllWindows(workspace.desktops[i], workspace.desktops[i-1], targetActivity);
+        _sendAllWindows(workspace.desktops[i], workspace.desktops[i - realOffset], targetActivity);
+    }
+
+    if (!noFollow) {
+
+        workspace.activities.filter((activity) => (activity != workspace.currentActivity) && (!targetActivity || activity == targetActivity)).forEach((activity) => {
+            const actCurrent = lastVirtualDesktopCompatLayer.lastVirtualDesktop(activity);
+            const actCurrIndex = workspace.desktops.indexOf(actCurrent);
+
+            if (actCurrIndex >= start && actCurrIndex <= end) {
+                lastVirtualDesktopCompatLayer.setLastVirtualDesktop(activity, workspace.desktops[actCurrIndex - realOffset]);
+            }
+        })
+
+        if (currIndex >= start && currIndex <= end && (!targetActivity || targetActivity == workspace.currentActivity)) {
+            workspace.currentDesktop = workspace.desktops[currIndex - realOffset];
+        }
     }
 }
 
